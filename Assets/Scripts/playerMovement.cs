@@ -10,6 +10,7 @@ public class playerMovement : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
+    [SerializeField] AudioSource js;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,6 +31,7 @@ public class playerMovement : MonoBehaviour
 
     void Jump(){
         rb.velocity = new Vector3(rb.velocity.x,jumpForce,rb.velocity.z);
+        js.Play();
     }
     private void OnCollisionEnter(Collision collision) {
         if(collision.gameObject.CompareTag("Enemy Head")){
